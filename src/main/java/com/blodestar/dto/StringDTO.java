@@ -3,8 +3,18 @@ package main.java.com.blodestar.dto;
 import java.io.Serializable;
 
 public class StringDTO implements Serializable {
+	private String type;
+	private Integer length;
 	private String mainString;
 	private String resultString;
+
+	public String getType() {
+		return type;
+	}
+
+	public Integer getLength() {
+		return length;
+	}
 
 	public String getMainString() {
 		return mainString;
@@ -12,6 +22,14 @@ public class StringDTO implements Serializable {
 
 	public String getResultString() {
 		return resultString;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setLength(Integer length) {
+		this.length = length;
 	}
 
 	public void setMainString(String mainString) {

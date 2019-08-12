@@ -7,9 +7,11 @@ import main.java.com.blodestar.vo.StringVO;
 import java.lang.reflect.Field;
 
 public class DataTransmitService {
-	public StringDTO checkNecessaryData(final StringVO stringVO, final String[] necessaryAttributeArray) {
+	private StringDTO checkNecessaryData(final StringVO stringVO, final String[] necessaryAttributeArray) {
+		// Available resultString must be null;
 		StringDTO stringDTO = new StringDTO();
 		Field[] fields = stringVO.getClass().getDeclaredFields();
+		StringBuilder stringBuilder = new StringBuilder("Miss attribute: ");
 		for (int i = 0, len = fields.length; i < len; i++) {
 			String attributeName = fields[i].getName();
 			boolean accessFlag = fields[i].isAccessible();
@@ -18,33 +20,38 @@ public class DataTransmitService {
 				Object thisObject = fields[i].get(stringVO);
 				// if (int)length == 0, thisObject = (Integer)0
 				if (LiborArrayUtil.containsString(necessaryAttributeArray, attributeName) && thisObject == null) {
-					stringDTO.setResultString(attributeName + " is blank!");
-					fields[i].setAccessible(accessFlag);
-					return stringDTO;
+					stringBuilder.append(attributeName);
+					stringBuilder.append(",");
 				}
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 				stringDTO.setResultString(e.getMessage());
-				fields[i].setAccessible(accessFlag);
 				return stringDTO;
+			} finally {
+				fields[i].setAccessible(accessFlag);
 			}
 			fields[i].setAccessible(accessFlag);
+		}
+
+		if (!"Miss attribute: ".equals(stringBuilder.toString())) {
+			stringBuilder.setCharAt(stringBuilder.length() - 1, ';');
+			stringDTO.setResultString(stringBuilder.toString());
 		}
 		return stringDTO;
 	}
 
-	public StringDTO transmitToStringDTO(StringVO stringVOInput) {
-		StringDTO stringDTO = new StringDTO();
-		stringDTO.setMainString(stringVOInput.getMainString());
-		stringDTO.setResultString(stringVOInput.getResultString());
+	public StringDTO transmitNormalString(final StringVO stringVO) {
+		// Available resultString must be null;
+		StringDTO stringDTO = checkNecessaryData(
+				stringVO, LiborStringService.NECESSARY_ATTRIBUTE_FOR_CREATE_STRING);
+		if (stringDTO.getResultString() != null) {
+			return stringDTO;
+		}
+		stringDTO.setType(stringVO.getType());
+		stringDTO.setLength(stringVO.getLength());
 		return stringDTO;
 	}
 
-	public StringVO transmitToStringVO(StringDTO stringDTOInput) {
-		StringVO stringVO = new StringVO();
-		stringVO.setMainString(stringDTOInput.getMainString());
-		stringVO.setResultString(stringDTOInput.getResultString());
-		return stringVO;
-	}
+
 
 }

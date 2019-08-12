@@ -11,43 +11,33 @@ public class StringController {
 	private LiborStringService liborStringService = new LiborStringService();
 
 	public StringVO getTheLongestNumberInString(final StringVO stringVO) {
-		StringDTO stringDTO = liborStringService.createNewString(stringVO);
-		stringDTO = liborStringService.getTheLongestNumberString(stringDTO);
- 		return dataTransmitService.transmitToStringVO(stringDTO);
-	}
-
-	public StringVO getThePercentNumberString(final StringVO stringVO) {
-		final String[] necessaryAttributeArray = {"type", "length"};
-		// resultString must be null;
-		StringDTO stringDTO = dataTransmitService.checkNecessaryData(stringVO, necessaryAttributeArray);
-		/* int missingAttributeLength = missingAttributeArray.length;
-		if (missingAttributeLength != 0) {
-			StringBuilder stringBuilder = new StringBuilder("miss these data:");
-			for (int i = 0; i < missingAttributeLength; i++) {
-				stringBuilder.append(missingAttributeArray[i]);
-				stringBuilder.append(",");
-			}
-			stringBuilder.setCharAt(missingAttributeLength, ';');
-			stringVO.setResultString(stringBuilder.toString());
-			return stringVO;
-		} */
+		StringDTO stringDTO = dataTransmitService.transmitNormalString(stringVO);
 		if (stringDTO.getResultString() != null) {
 			stringVO.setResultString(stringDTO.getResultString());
 			return stringVO;
 		}
-		stringDTO = liborStringService.createNewString(stringVO);
-		stringDTO = liborStringService.getThePercentNumberString(stringDTO);
-		return dataTransmitService.transmitToStringVO(stringDTO);
+		stringDTO = liborStringService.createNewString(stringDTO);
+		stringVO.setMainString(stringDTO.getMainString());
+		stringDTO = liborStringService.getTheLongestNumberString(stringDTO);
+		stringVO.setResultString(stringDTO.getResultString());
+ 		return stringVO;
 	}
 
-	/* public IntegerArrayVO doBubbleSort() {
-		System.out.println("------------------------Each Sort-------------------------");
-		LiborIntegerArrayUtil randomArray = new LiborIntegerArrayUtil(LiborIntegerArrayUtil.INTEGER, 5);
-		int[] randomArrayBeforeSort = randomArray.getMainArray();
-		System.out.println("The array before sort is " + randomArrayBeforeSort
-				+ randomArray.getStringToShowMainArray());
-		System.out.println("The array after sort is " + randomArray.getMainArray()
-				+ randomArray.getStringToShowMainArray());
-	} */
-
+	public StringVO getThePercentNumberString(final StringVO stringVO) {
+		StringDTO stringDTO = dataTransmitService.transmitNormalString(stringVO);
+		if (stringDTO.getResultString() != null) {
+			stringVO.setResultString(stringDTO.getResultString());
+			return stringVO;
+		}
+		stringDTO = liborStringService.createNewString(stringDTO);
+		if (stringDTO.getResultString() != null) {
+			stringVO.setResultString(stringDTO.getResultString());
+			return stringVO;
+		} else {
+			stringVO.setMainString(stringDTO.getMainString());
+		}
+		stringDTO = liborStringService.getThePercentNumberString(stringDTO);
+		stringVO.setResultString(stringDTO.getResultString());
+		return stringVO;
+	}
 }

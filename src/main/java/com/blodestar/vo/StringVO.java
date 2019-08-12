@@ -8,9 +8,6 @@ public class StringVO implements Serializable {
 	private String mainString;
 	private String resultString;
 
-	public static final String INCLUDE_NUMBER = "includeNumber";
-	public static final String INCLUDE_PERCENTAGE = "includePercentage";
-
 	public String getType() {
 		return type;
 	}

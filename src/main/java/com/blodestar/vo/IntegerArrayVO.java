@@ -1,8 +1,8 @@
-package main.java.com.blodestar.dto;
+package main.java.com.blodestar.vo;
 
 import java.io.Serializable;
 
-public class IntegerArrayDTO implements Serializable {
+public class IntegerArrayVO implements Serializable {
     private Integer length;
     private int[] mainArray;
     private int[] resultArray;
