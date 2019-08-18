@@ -1,9 +1,9 @@
-package main.java.com.blodestar.controller;
+package main.java.com.bluelodestar.controller;
 
-import main.java.com.blodestar.dto.StringDTO;
-import main.java.com.blodestar.service.DataTransmitService;
-import main.java.com.blodestar.service.LiborStringService;
-import main.java.com.blodestar.vo.StringVO;
+import main.java.com.bluelodestar.dtos.StringDTO;
+import main.java.com.bluelodestar.service.DataTransmitService;
+import main.java.com.bluelodestar.service.LiborStringService;
+import main.java.com.bluelodestar.vos.StringVO;
 
 public class StringController {
 	private DataTransmitService dataTransmitService = new DataTransmitService();

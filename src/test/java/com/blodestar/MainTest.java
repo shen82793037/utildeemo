@@ -9,11 +9,8 @@ public class MainTest {
 
     public static void main(String[] args) {
         // stringManipulationTest.getTheLongestNumberInRandomString();
-        for (int i = 0; i < 10; i++) {
-            stringManipulationTest.getThePercentNumberInRandomLetterString();
-        }
+        // stringManipulationTest.getThePercentNumberInRandomLetterString();
 
-        // integerArrayArithmeticTest.doBubbleSort();
-        // integerArrayArithmeticTest.doSelectSort();
+        integerArrayArithmeticTest.doSort();
     }
 }

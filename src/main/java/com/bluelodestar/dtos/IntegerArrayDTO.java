@@ -1,10 +1,12 @@
-package main.java.com.blodestar.dto;
+package main.java.com.bluelodestar.dtos;
 
 import java.io.Serializable;
 
 public class IntegerArrayDTO implements Serializable {
     private Integer length;
     private int[] mainArray;
+    private String message;
+    private String process;
     private int[] resultArray;
 
     public Integer getLength() {
@@ -15,6 +17,18 @@ public class IntegerArrayDTO implements Serializable {
         return mainArray;
     }
 
+    public String getProcess() {
+        return process;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int[] getResultArray() {
+        return resultArray;
+    }
+
     public void setLength(Integer length) {
         this.length = length;
     }
@@ -23,11 +37,17 @@ public class IntegerArrayDTO implements Serializable {
         this.mainArray = mainArray;
     }
 
+    public void setProcess(String process) {
+        this.process = process;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public void setResultArray(int[] resultArray) {
         this.resultArray = resultArray;
     }
 
-    public int[] getResultArray() {
-        return resultArray;
-    }
+
 }

@@ -1,4 +1,4 @@
-package main.java.com.blodestar.vo;
+package main.java.com.bluelodestar.vos;
 
 import java.io.Serializable;
 

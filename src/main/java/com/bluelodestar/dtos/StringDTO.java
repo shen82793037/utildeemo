@@ -1,4 +1,4 @@
-package main.java.com.blodestar.dto;
+package main.java.com.bluelodestar.dtos;
 
 import java.io.Serializable;
 

@@ -1,8 +1,8 @@
 package test.java.com.blodestar.stringTest;
 
-import main.java.com.blodestar.controller.StringController;
-import main.java.com.blodestar.service.LiborStringService;
-import main.java.com.blodestar.vo.StringVO;
+import main.java.com.bluelodestar.controller.StringController;
+import main.java.com.bluelodestar.service.LiborStringService;
+import main.java.com.bluelodestar.vos.StringVO;
 
 public class StringManipulationTest {
 	public void getTheLongestNumberInRandomString() {

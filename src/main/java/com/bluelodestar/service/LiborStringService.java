@@ -1,7 +1,6 @@
-package main.java.com.blodestar.service;
+package main.java.com.bluelodestar.service;
 
-import main.java.com.blodestar.dto.StringDTO;
-import main.java.com.blodestar.vo.StringVO;
+import main.java.com.bluelodestar.dtos.StringDTO;
 
 import java.util.Arrays;
 import java.util.Random;
